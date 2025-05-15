@@ -2,7 +2,6 @@ import time
 import random
 import matplotlib.pyplot as plt
 
-# Алгоритми (сюди встав функції зі своєї реалізації)
 def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]
@@ -87,7 +86,6 @@ def counting_sort_for_radix(arr, exp):
     for i in range(n):
         arr[i] = output[i]
 
-# Дані для тестів
 sizes = [100, 500, 1000, 5000]
 results = {
     "Insertion Sort": [],
@@ -98,10 +96,8 @@ results = {
     "Radix Sort": []
 }
 
-# Функції, які працюють in-place або повертають новий масив
 inplace_algos = ["Insertion Sort", "Bubble Sort", "Selection Sort", "Merge Sort", "Radix Sort"]
 
-# Тестування
 for size in sizes:
     base = [random.randint(1, 10000) for _ in range(size)]
     for name, func in [
@@ -117,11 +113,10 @@ for size in sizes:
         if name in inplace_algos:
             func(arr)
         else:
-            func(arr)  # Quick sort returns a new list, but we don't assign it
+            func(arr) 
         end = time.time()
         results[name].append(end - start)
 
-# Побудова графіка
 for name, times in results.items():
     plt.plot(sizes, times, label=name)
 
